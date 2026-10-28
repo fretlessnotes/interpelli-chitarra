@@ -72,13 +72,27 @@ def trova_url_csv(client: httpx.Client, prefisso: str) -> str | None:
 
 
 def normalizza_sito(s: str) -> str | None:
-    s = (s or "").strip().strip("/")
-    if not s or "non disponibile" in s.lower() or "." not in s:
+    """Ripulisce gli indirizzi dell'anagrafe, che spesso sono scritti male:
+    'https://https//www.x.it', 'HTPPS//WWW.X.IT', 'www.https//x.it', 'x.edu,it', 'x@gov.it', 'x.org.'.
+    Restituisce None se l'indirizzo non è recuperabile."""
+    s = (s or "").strip()
+    if not s or "non disponibile" in s.lower():
         return None
-    s = s.split()[0]
-    if not re.match(r"https?://", s, re.I):
-        s = "https://" + s
-    return s.rstrip("/") + "/"
+    s = s.split()[0].replace(",", ".").replace("@", ".").replace("\\", "/")
+    # tieni http solo se l'indirizzo era scritto correttamente così; altrimenti https
+    schema = "http" if re.match(r"http://(?!https?/)", s, re.I) else "https"
+    prima = None
+    while prima != s:  # ripete finché c'è qualcosa da togliere (es. https://www.http//...)
+        prima = s
+        s = re.sub(r"^www\.(?=h[a-z]{1,5}(?::|/))", "", s, flags=re.I)        # www.https//...
+        s = re.sub(r"^(?:h[a-z]{1,5}(?::/{0,3}|/{1,3}))+", "", s, flags=re.I)  # https://, https//, htpps//, http/
+        s = s.lstrip("/:")
+    host, _, resto = s.partition("/")
+    host = re.sub(r"\.{2,}", ".", host.lower()).strip(".")
+    if not re.fullmatch(r"[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}", host):
+        return None
+    resto = resto.strip()
+    return f"{schema}://{host}/{resto}"
 
 
 def leggi_righe(testo: str):

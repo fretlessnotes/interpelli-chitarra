@@ -32,6 +32,8 @@ import httpx
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
 
+from costruisci_elenco_scuole import normalizza_sito
+
 UA = os.environ.get("CRAWLER_UA", "CrawlerInterpelliChitarra/1.0 (uso personale)")
 UA_TOKEN = "CrawlerInterpelliChitarra"
 
@@ -91,7 +93,14 @@ def carica_siti(percorso_csv: str, extra: str, solo: str | None):
                     siti.append({"nome": parti[1] if len(parti) > 1 else urlparse(parti[0]).hostname,
                                  "provincia": parti[2] if len(parti) > 2 else "",
                                  "sito": parti[0]})
-    return siti
+    # ripulisce gli indirizzi (l'anagrafe ne ha molti scritti male) e toglie i doppioni
+    puliti, visti = [], set()
+    for s in siti:
+        url = normalizza_sito(s.get("sito", ""))
+        if url and url not in visti:
+            visti.add(url)
+            puliti.append({**s, "sito": url})
+    return puliti
 
 
 def carica_stato():
@@ -146,15 +155,27 @@ class Sito:
             try:
                 r = await self._get(urljoin(self.home, "/robots.txt"))
                 rp.parse(r.text.splitlines() if r.status_code == 200 else [])
-            except httpx.HTTPError:
+            except Exception:
                 rp.parse([])
             self.robots = rp
-        return self.robots.can_fetch(UA_TOKEN, url)
+        try:
+            return self.robots.can_fetch(UA_TOKEN, url)
+        except Exception:
+            return True
 
     async def scarica(self, url: str):
         if not await self.permesso(url):
             return None
-        r = await self._get(url)
+        try:
+            r = await self._get(url)
+        except (httpx.InvalidURL, httpx.UnsupportedProtocol, httpx.TooManyRedirects, ValueError):
+            # link o reindirizzamento malformato: si salta solo questa pagina
+            return None
+        except httpx.HTTPError:
+            # se non risponde la home il sito è giù: lo si abbandona; altrimenti si salta solo la pagina
+            if norm(url) == norm(self.home):
+                raise
+            return None
         if r.status_code >= 400:
             return None
         return r
@@ -288,7 +309,7 @@ async def controlla_sito(client, scuola, stato, scadenza, risultati, contatori):
                             segnala(url, etichetta, provenienza, estratto(t, m))
                             break
         contatori["ok"] += 1
-    except (httpx.HTTPError, asyncio.TimeoutError, ValueError) as e:
+    except Exception as e:  # qualsiasi problema di un sito non deve fermare il giro
         contatori["errori"] += 1
         contatori["ultimi_errori"].append(f"{home}: {type(e).__name__}")
     if not sezioni:
@@ -377,8 +398,9 @@ async def main():
                 try:
                     await asyncio.wait_for(
                         controlla_sito(client, scuola, stato, scadenza, risultati, contatori), timeout=180)
-                except asyncio.TimeoutError:
+                except Exception as e:  # anche un timeout o un errore imprevisto: si passa al sito dopo
                     contatori["errori"] += 1
+                    contatori["ultimi_errori"].append(f"{scuola.get('sito')}: {type(e).__name__}")
                 completati += 1
 
         await asyncio.gather(*(uno(s) for s in ordine))
