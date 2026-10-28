@@ -1,0 +1,47 @@
+name: Interpelli chitarra
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"     # ogni 30 minuti (GitHub può ritardare di qualche minuto)
+  workflow_dispatch:            # pulsante "Run workflow" per lanciarlo a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crawler
+  cancel-in-progress: false
+
+jobs:
+  giro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Crea l'elenco scuole se manca
+        run: |
+          if [ ! -s data/scuole.csv ]; then python costruisci_elenco_scuole.py; fi
+
+      - name: Controlla i siti
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python crawler.py --minuti 22
+
+      - name: Salva lo stato
+        if: always()
+        run: |
+          git config user.name "crawler-interpelli"
+          git config user.email "crawler@users.noreply.github.com"
+          git add data trovati.md 2>/dev/null || git add data
+          git diff --cached --quiet || git commit -m "giro $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase || true
+          git push || true
