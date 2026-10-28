@@ -13,3 +13,7 @@
 | 2026-10-28 18:44 | I.C. SONDRIO - "PAESI RETICI" | SONDRIO | Avviso_selezione_interpello_AB56_CHITARRA.pdf | https://icpaesiretici.edu.it/sito-download-file/1765/all |
 | 2026-10-28 18:44 | I.C. SONDRIO - "PAESI RETICI" | SONDRIO | Domanda_di_partecipazione_AB56_CHITARRA.docx | https://icpaesiretici.edu.it/sito-download-file/1764/all |
 | 2026-10-28 18:44 | I.C. CAMBIANO | TORINO | Chitarra Visualizza gli argomenti per: Chitarra | https://www.iccambiano.edu.it/argomento/chitarra |
+| 2026-10-28 19:13 | I.C. "FOGAZZARO-REBORA" | VERBANO-CUSIO-OSSOLA | Saggi di flauto, clarinetto, chitarra, pianoforte e percussioni | https://www.icfogazzarorebora.edu.it/evento/saggio-di-pianoforte |
+| 2026-10-28 19:13 | I.C. 'G. BASSANI' - ARGENTA | FERRARA | GRADUATORIE DI ISTITUTO PER SUPPLENZE: PERSONALE DOCENTE, SECONDARIA DI 1° GRADO DELL’IC BASSANI ARGENTA | https://icgiorgiobassani.edu.it/graduatorie-di-istituto-per-supplenze-personale-docente-secondaria-di-1-grado-dellic-bassani-argenta |
+| 2026-10-28 19:13 | I.C. PERUGIA 1 "F. MORLACCHI" | PERUGIA | Concerto di Natale classi Chitarra e Flauto | https://istitutocomprensivoperugia1.edu.it/concerto-di-natale-classi-chitarra-e-flauto |
+| 2026-10-28 19:13 | I.C. PERUGIA 1 "F. MORLACCHI" | PERUGIA | Concerto di Natale🎄🌟 – classi di Flauto e Chitarra | https://istitutocomprensivoperugia1.edu.it/concerto-di-natale-classi-di-flauto-e-chitarra |
