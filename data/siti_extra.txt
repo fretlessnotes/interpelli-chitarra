@@ -1,0 +1,4 @@
+# Siti in più da controllare, uno per riga:  URL | nome | provincia
+# Utile per scuole assenti dall'anagrafe o pagine "Interpelli" degli uffici scolastici.
+# Esempio:
+# https://www.liceoesempio.edu.it/ | Liceo musicale Esempio | TORINO
