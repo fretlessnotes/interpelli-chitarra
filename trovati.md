@@ -17,3 +17,4 @@
 | 2026-10-28 19:13 | I.C. 'G. BASSANI' - ARGENTA | FERRARA | GRADUATORIE DI ISTITUTO PER SUPPLENZE: PERSONALE DOCENTE, SECONDARIA DI 1° GRADO DELL’IC BASSANI ARGENTA | https://icgiorgiobassani.edu.it/graduatorie-di-istituto-per-supplenze-personale-docente-secondaria-di-1-grado-dellic-bassani-argenta |
 | 2026-10-28 19:13 | I.C. PERUGIA 1 "F. MORLACCHI" | PERUGIA | Concerto di Natale classi Chitarra e Flauto | https://istitutocomprensivoperugia1.edu.it/concerto-di-natale-classi-chitarra-e-flauto |
 | 2026-10-28 19:13 | I.C. PERUGIA 1 "F. MORLACCHI" | PERUGIA | Concerto di Natale🎄🌟 – classi di Flauto e Chitarra | https://istitutocomprensivoperugia1.edu.it/concerto-di-natale-classi-di-flauto-e-chitarra |
+| 2026-10-28 20:11 | IST. OMNICOMPRENSIVO EUROPEO | MILANO | Chitarra | https://www.omnicomprensivoeuropeo.edu.it/cerca?tag=chitarra+ |
