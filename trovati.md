@@ -20,3 +20,4 @@
 | 2026-10-28 20:11 | IST. OMNICOMPRENSIVO EUROPEO | MILANO | Chitarra | https://www.omnicomprensivoeuropeo.edu.it/cerca?tag=chitarra+ |
 | 2026-10-28 22:04 | I.C. A. PACINOTTI - S.CESARIO | MODENA | Laboratorio musicale Percorsi a 6 corde – corso di chitarra a.s. 2023/2024 NEWS | https://www.icapacinotti.edu.it/pagine/laboratorio-musicale-percorsi-a-6-corde--corso-di-chitarra-as-20232024 |
 | 2026-10-29 02:14 | I.C. MONTALDO | GENOVA | Chitarra | https://www.icmontaldo-genova.edu.it/cerca?tag=chitarra+ |
+| 2026-10-29 04:06 | IS VITTORIO EMANUELE II-RUFFINI | GENOVA | Chitarra | https://www.ver.edu.it/cerca?tag=chitarra+ |
