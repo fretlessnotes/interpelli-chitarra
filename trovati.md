@@ -19,3 +19,4 @@
 | 2026-10-28 19:13 | I.C. PERUGIA 1 "F. MORLACCHI" | PERUGIA | Concerto di Natale🎄🌟 – classi di Flauto e Chitarra | https://istitutocomprensivoperugia1.edu.it/concerto-di-natale-classi-di-flauto-e-chitarra |
 | 2026-10-28 20:11 | IST. OMNICOMPRENSIVO EUROPEO | MILANO | Chitarra | https://www.omnicomprensivoeuropeo.edu.it/cerca?tag=chitarra+ |
 | 2026-10-28 22:04 | I.C. A. PACINOTTI - S.CESARIO | MODENA | Laboratorio musicale Percorsi a 6 corde – corso di chitarra a.s. 2023/2024 NEWS | https://www.icapacinotti.edu.it/pagine/laboratorio-musicale-percorsi-a-6-corde--corso-di-chitarra-as-20232024 |
+| 2026-10-29 02:14 | I.C. MONTALDO | GENOVA | Chitarra | https://www.icmontaldo-genova.edu.it/cerca?tag=chitarra+ |
